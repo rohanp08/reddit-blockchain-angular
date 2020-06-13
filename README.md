@@ -1,3 +1,3 @@
 # Angular Ethereum Starter-Kit
 
-A starter-kit for deploying smart contracts on Ethereum and devloping DAPPs using Angular
+A decentralized app for posting content and messages and tipping the content using Ethereum and Angular
