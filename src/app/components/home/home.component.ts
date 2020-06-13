@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EthereumService } from 'src/app/providers/ethereum.service';
+import { SessionStorageService } from 'ngx-webstorage';
+import { FormControl } from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +11,30 @@ import { EthereumService } from 'src/app/providers/ethereum.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private etherService: EthereumService) { }
+  posts = [];
+  content = new FormControl('');
+
+  constructor(
+    private ehterService: EthereumService,
+    private sessionStorage: SessionStorageService
+  ) { }
 
   ngOnInit() {
-    this.etherService.loadWeb3();
-    this.etherService.getAccountInfo();
+    this.ehterService.loadWeb3();
+    this.ehterService.loadContract().then(()=> {
+      this.ehterService.loadPosts();
+    });
+    
+    this.posts = this.sessionStorage.retrieve("posts");
+    console.log(this.posts);
+  }
+
+  addPost() {
+    this.ehterService.createPost(this.content.value);
+  }
+
+  tipPost(id) {
+    this.ehterService.tipPost(id);
   }
 
 }

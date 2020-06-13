@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.etherService.loadWeb3();
-    this.etherService.getAccountInfo();
+    this.etherService.loadContract();
     this.sessionStorage.observe("account").subscribe((data) => {
       this.account = data;
     });

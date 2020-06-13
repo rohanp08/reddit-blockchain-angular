@@ -16,3 +16,35 @@ code {
     padding: 2px;
     font-size: 105%;
 }
+
+.card {
+    padding-top: 2%;
+    margin: auto;
+    width: 50%;
+}
+
+mat-card-content {
+    padding-left: 15px;
+}
+
+mat-card-actions {
+    padding-left: 25px;
+}
+
+.tip-btn {
+    left: 500px;
+}
+
+.add-btn {
+    width: 200px;
+}
+
+mat-form-field {
+    width:500px !important;
+}
+
+.main-div {
+    margin: 0px auto;
+    padding-top: 2%;
+    width: 50%;
+}
