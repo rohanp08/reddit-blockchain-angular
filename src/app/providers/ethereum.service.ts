@@ -29,6 +29,7 @@ export class EthereumService {
       this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
     window.web3 = new Web3(this.web3Provider);
+    window.ethereum.enable();
   }
 
   async loadContract() {
@@ -42,7 +43,7 @@ export class EthereumService {
 
   async loadPosts() {
     if(this.networkData) {
-      this.socialNetwork = this.web3.eth.Contract(SocialNetwork.abi, this.networkData.address);
+      this.socialNetwork = new this.web3.eth.Contract(SocialNetwork.abi, this.networkData.address);
       this.postCount = await this.socialNetwork.methods.postCount().call()
       // Load Posts
       for(var i = 1 ; i <= this.postCount ; i++) {
